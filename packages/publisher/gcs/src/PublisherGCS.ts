@@ -50,7 +50,7 @@ export default class PublisherGCS extends PublisherStatic<PublisherGCSConfig> {
     updateStatusLine();
     await Promise.all(
       artifacts.map(async (artifact) => {
-        d('uploading:', artifact.path);
+        d('uploading xxxx:', artifact.path);
 
         await bucket.upload(artifact.path, {
           gzip: true,
@@ -58,6 +58,7 @@ export default class PublisherGCS extends PublisherStatic<PublisherGCSConfig> {
           predefinedAcl: this.config.predefinedAcl,
           public: this.config.public,
           private: this.config.private,
+          metadata: this.config.metadata,
         });
 
         uploaded += 1;
